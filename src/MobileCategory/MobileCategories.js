@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
 import MobilesView from './MobilesView'
 import { useSelector, useDispatch } from 'react-redux';
-import { mobilesCategory, mobileBrands, selectedMobileBrands, mobilefilter, brandscheck, removebrandscheck, clearbrandscheck, filterAllMobiles } from '../Features/MobileCategories/MobileCategoriesSlice';
+import { mobilesCategory, mobileBrands, selectedMobileBrands, mobilefilter, brandscheck, removebrandscheck } from '../Features/MobileCategories/MobileCategoriesSlice';
 
 const MobileCategories = () => {
     const dispatch = useDispatch()
@@ -17,7 +17,6 @@ const MobileCategories = () => {
     const settings = {
         infinite: true,
         speed: 500,
-        
         slidesToShow: 5,
         slidesToScroll: 5
     };
@@ -29,13 +28,8 @@ const MobileCategories = () => {
     const brandsCheckbox = (e) => {
         !e.target.checked ? dispatch(removebrandscheck(e.target.value)) : dispatch(brandscheck(e.target.value))
     }
-    // const mobileDetailds = useSelector(state => state.mobilecategory.category)
-    // const mobBrand = useSelector(state => state.mobilecategory.selectedMobileBrand)
-    // const choosenMob = mobileDetailds?.filter(mobile => mobile?.name === mobBrand && mobile?.price <= filterMobPrice)
-
+    
     const onHandleMobileClick = (data) => {
-        // dispatch(filterAllMobiles(choosenMob))
-        // dispatch(clearbrandscheck())
         dispatch(selectedMobileBrands(data?.path))
     }
 
